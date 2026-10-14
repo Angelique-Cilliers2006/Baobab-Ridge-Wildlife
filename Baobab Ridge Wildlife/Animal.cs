@@ -3,17 +3,15 @@ using System.ComponentModel;
 
 namespace Baobab_Ridge_Wildlife
 {
-    /// <summary>
     /// One animal in the centre's care.
     /// Status and HousingUnit are never typed by the user; they are always
     /// calculated from RecoveryScore by the Classify method.
-    /// </summary>
     public class Animal
     {
         public const int MinScore = 0;
         public const int MaxScore = 100;
 
-        /// <summary>All five statuses in band order (Person D uses this for the summary).</summary>
+//All five statuses in band order (Person D uses this for the summary).
         public static readonly string[] AllStatuses =
             { "Critical", "Serious", "Stable", "Recovering", "Release-Ready" };
 
@@ -44,7 +42,7 @@ namespace Baobab_Ridge_Wildlife
         [DisplayName("Housing Unit")]
         public string HousingUnit { get; private set; }
 
-        /// <summary>Creates an animal and calculates its status and housing unit from the score.</summary>
+        ///Creates an animal and calculates its status and housing unit from the score.
         public Animal(string animalId, string name, string species, int age, int recoveryScore)
         {
             AnimalId = animalId;
@@ -54,11 +52,11 @@ namespace Baobab_Ridge_Wildlife
             RecoveryScore = recoveryScore; // the setter calls ApplyClassification
         }
 
-        /// <summary>
+     
         /// The single classification method (brief Section 4).
         /// Returns the status and housing unit for a Recovery Score from 0 to 100.
         /// Add and Update both reach it through the RecoveryScore setter, so the rules exist in one place.
-        /// </summary>
+
         public static (string Status, string HousingUnit) Classify(int score)
         {
             if (score < MinScore || score > MaxScore)
@@ -72,22 +70,22 @@ namespace Baobab_Ridge_Wildlife
             return ("Release-Ready", "Pre-Release Camp");
         }
 
-        /// <summary>Sets Status and HousingUnit from the current Recovery Score.</summary>
+        /// Sets Status and HousingUnit from the current Recovery Score.
         private void ApplyClassification()
         {
             (Status, HousingUnit) = Classify(recoveryScore);
         }
 
-        /// <summary>Returns this animal as one line of animals.txt: ID|Name|Species|Age|Score|Status|Housing Unit.</summary>
+        /// Returns this animal as one line of animals.txt: ID|Name|Species|Age|Score|Status|Housing Unit.
         public string ToFileLine()
         {
             return string.Join("|", AnimalId, Name, Species, Age, RecoveryScore, Status, HousingUnit);
         }
 
-        /// <summary>
+   
         /// Converts one line of animals.txt into an Animal.
         /// Returns false for a malformed line so the loader can skip it instead of crashing.
-        /// </summary>
+
         public static bool TryParse(string line, out Animal animal)
         {
             animal = null;
