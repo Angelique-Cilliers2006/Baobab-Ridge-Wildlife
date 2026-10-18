@@ -23,7 +23,7 @@ namespace Baobab_Ridge_Wildlife
             btnClear.Click += btnClear_Click;
         }
 
-
+        // Method to enter edit mode for a specific animal
         private void EnterEditMode(Animal animal)
         {
             editingAnimal = animal;
@@ -38,6 +38,50 @@ namespace Baobab_Ridge_Wildlife
             btnAdd.Enabled = false;
             btnSaveChanges.Enabled = true;
             txtName.Focus();
+        }
+
+        // Method to exit edit mode and reset the form
+        private void ExitEditMode()
+        {
+            editingAnimal = null;
+
+            ClearInputs();  // method to clear all input fields
+            txtSearchId.Clear();
+
+            txtAnimalId.ReadOnly = false;
+            btnAdd.Enabled = true;
+            btnSaveChanges.Enabled = false;
+        }
+
+        // Finds an animal by its ID in the list of animals
+        private Animal FindAnimalById(string id)
+        {
+            string wanted = (id ?? "").Trim();
+
+            foreach (Animal animal in animals)
+            {
+                if (string.Equals(animal.AnimalId, wanted, StringComparison.OrdinalIgnoreCase))
+                {
+                    return animal;
+                }
+            }
+
+            return null;
+        }
+
+        // Load clicked grid row into the input fields for editing
+        private void dgvAnimals_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            
+            Animal clicked = dgvAnimals.Rows[e.RowIndex].DataBoundItem as Animal;
+            if (clicked == null) return;
+            
+            Animal animal = FindAnimalById(clicked.AnimalId);
+            if (animal != null)
+            {
+                EnterEditMode(animal);
+            }
         }
     }
 }
