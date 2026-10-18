@@ -59,6 +59,8 @@ namespace Baobab_Ridge_Wildlife
             BuildAnimalGrid();
 
             btnAdd.Click += btnAdd_Click;
+            btnDelete.Click += btnDelete_Click;                     // Person D, in Form1.PersonD.cs
+            btnGenerateSummary.Click += btnGenerateSummary_Click;   // Person D, in Form1.PersonD.cs
             Load += Form1_Load; // defined in Form1.View.cs
         }
 
@@ -257,4 +259,4 @@ namespace Baobab_Ridge_Wildlife
             MessageBox.Show(message, "File error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
-}
+}
