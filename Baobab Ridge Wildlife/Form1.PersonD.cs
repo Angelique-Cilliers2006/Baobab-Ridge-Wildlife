@@ -61,10 +61,9 @@ namespace Baobab_Ridge_Wildlife
             RefreshGrid();
 
             // If the deleted animal was loaded in the input boxes, clear them.
-            // Person C: switch this to your "leave edit mode" method once Update is merged.
             if (string.Equals(txtAnimalId.Text.Trim(), animal.AnimalId, StringComparison.OrdinalIgnoreCase))
             {
-                ClearInputs();
+                ExitEditMode();
             }
 
             MessageBox.Show(deleteService.Message, "Delete animal",
