@@ -1,46 +1,58 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
-using System.Text;
+using System.Windows.Forms;
 
 namespace Baobab_Ridge_Wildlife
 {
-    // Basic version so Feature 1 can be tested on its own.
-    // Person B replaces this file with the full Feature 2 (skipped-line count message, full error handling).
+    //Feature 2: View all animals and handle file loading.
     public partial class Form1
     {
-        /// <summary>Loads animals.txt and shows it in the grid when the form opens.</summary>
+        /// <summary>
+        /// Loads valid animal records when the form opens and displays
+        /// a message if any malformed records were skipped.
+        /// </summary>
         private void Form1_Load(object sender, EventArgs e)
         {
             LoadAnimals();
             RefreshGrid();
         }
 
-        /// <summary>Reads every valid line of animals.txt into the list; creates an empty file if missing.</summary>
+        /// <summary>
+        /// Loads animals through AnimalFileHandler, handles file errors,
+        /// and informs the user if malformed records were skipped.
+        /// </summary>
         private void LoadAnimals()
         {
             animals.Clear();
-            try
-            {
-                if (!File.Exists(DataFilePath))
-                {
-                    File.WriteAllText(DataFilePath, "", new UTF8Encoding(false));
-                    return;
-                }
 
-                foreach (string line in File.ReadAllLines(DataFilePath, Encoding.UTF8))
-                {
-                    if (Animal.TryParse(line, out Animal animal))
-                        animals.Add(animal);
-                }
-            }
-            catch (Exception ex) when (ex is IOException || ex is UnauthorizedAccessException)
+            //Reuses the existing handler for loading and file error handling.
+            var loadedAnimals = fileHandler.LoadAll();
+
+            //Stops if loading failed.
+            if (loadedAnimals == null)
             {
-                ShowFileError("animals.txt could not be read: " + ex.Message);
+                ShowFileError(fileHandler.LastError);
+                return;
+            }
+
+            //Adds successfully loaded records to the form's existing list.
+            animals.AddRange(loadedAnimals);
+
+            //Informs the user if malformed records were skipped.
+            if (fileHandler.SkippedCount > 0)
+            {
+                MessageBox.Show(
+                    $"{fileHandler.SkippedCount} invalid record(s) in animals.txt " +
+                    "were skipped. The remaining valid records have been loaded.",
+                    "Invalid records skipped",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
             }
         }
 
-        /// <summary>Re-binds the grid to a fresh copy of the list so it shows current data with no duplicate rows.</summary>
+        /// <summary>
+        /// Rebinds the grid to a fresh list so changes appear without creating duplicate rows.
+        /// </summary>
         private void RefreshGrid()
         {
             dgvAnimals.DataSource = null;
