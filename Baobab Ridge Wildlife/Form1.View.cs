@@ -8,8 +8,7 @@ namespace Baobab_Ridge_Wildlife
     public partial class Form1
     {
         /// <summary>
-        /// Loads valid animal records when the form opens and displays
-        /// a message if any malformed records were skipped.
+        /// Loads valid animal records when the form opens and displays a message if any malformed records were skipped.
         /// </summary>
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -18,8 +17,7 @@ namespace Baobab_Ridge_Wildlife
         }
 
         /// <summary>
-        /// Loads animals through AnimalFileHandler, handles file errors,
-        /// and informs the user if malformed records were skipped.
+        /// Loads animals through AnimalFileHandler, handles file errors and informs the user if malformed records were skipped.
         /// </summary>
         private void LoadAnimals()
         {
