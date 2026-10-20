@@ -218,8 +218,8 @@ Baobab-Ridge-Wildlife/
 | Team member | Responsibility |
 |-------------|----------------|
 | **Angelique** | Form layout and Feature 1 (Add) |
-| **Marco** | Feature 2 (View all animals, file loading, grid) |
-| **Ditheto** | Feature 3 (Search and Update) |
+| **Ditheto** | Feature 2 (View all animals, file loading, grid) |
+| **Marco** | Feature 3 (Search and Update) |
 | **Kudzai** | Feature 4 (Delete), Feature 5 (Summary report) and final fresh-clone test |
 
 ---
