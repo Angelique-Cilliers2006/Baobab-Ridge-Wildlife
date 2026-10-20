@@ -23,7 +23,7 @@ namespace Baobab_Ridge_Wildlife
             btnClear.Click += btnClear_Click;
         }
 
-        // Method to enter edit mode for a specific animal
+        // enter edit mode for a specific animal
         private void EnterEditMode(Animal animal)
         {
             editingAnimal = animal;
@@ -40,12 +40,12 @@ namespace Baobab_Ridge_Wildlife
             txtName.Focus();
         }
 
-        // Method to exit edit mode and reset the form
+        // exit edit mode and reset the form
         private void ExitEditMode()
         {
             editingAnimal = null;
 
-            ClearInputs();  // method to clear all input fields
+            ClearInputs(); 
             txtSearchId.Clear();
 
             txtAnimalId.ReadOnly = false;
@@ -144,7 +144,7 @@ namespace Baobab_Ridge_Wildlife
                 txtAge.Text,
                 txtRecoveryScore.Text,
                 animals,
-                checkId: false // ID is not checked during edit mode
+                checkId: false
             );
 
             if (!result.IsValid)
