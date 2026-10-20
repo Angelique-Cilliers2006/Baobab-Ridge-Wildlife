@@ -22,7 +22,7 @@ namespace Baobab_Ridge_Wildlife
         public int RecoveryScore { get; set; }
     }
 
-    /// Validation rules from brief Section 3, shared by Add (Person A) and Update (Person C).
+    /// Validation rules from Section 3, shared by Add and Update.
 
     public static class AnimalValidator
     {
