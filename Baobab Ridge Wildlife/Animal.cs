@@ -11,7 +11,7 @@ namespace Baobab_Ridge_Wildlife
         public const int MinScore = 0;
         public const int MaxScore = 100;
 
-//All five statuses in band order (Person D uses this for the summary).
+//All five statuses in band order
         public static readonly string[] AllStatuses =
             { "Critical", "Serious", "Stable", "Recovering", "Release-Ready" };
 
@@ -20,8 +20,7 @@ namespace Baobab_Ridge_Wildlife
 
         // DisplayName sets the grid column header text.
         [DisplayName("Animal ID")]
-        public string AnimalId { get; }   // no setter: the ID cannot change after saving
-
+        public string AnimalId { get; }   
         public string Name { get; set; }
         public string Species { get; set; }
         public int Age { get; set; }
@@ -33,8 +32,7 @@ namespace Baobab_Ridge_Wildlife
             set
             {
                 recoveryScore = value;
-                ApplyClassification(); // status and housing always follow the score
-            }
+                ApplyClassification(); 
         }
 
         public string Status { get; private set; }
@@ -53,7 +51,7 @@ namespace Baobab_Ridge_Wildlife
         }
 
      
-        /// The single classification method (brief Section 4).
+        /// The single classification method
         /// Returns the status and housing unit for a Recovery Score from 0 to 100.
         /// Add and Update both reach it through the RecoveryScore setter, so the rules exist in one place.
 
