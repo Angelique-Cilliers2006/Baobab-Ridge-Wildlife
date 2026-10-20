@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Baobab_Ridge_Wildlife
 {
-    // Person D: Feature 4 (Delete) and Feature 5 (Summary report).
+    
     // The buttons are created and wired in Form1.cs; the handlers live here.
     public partial class Form1
     {

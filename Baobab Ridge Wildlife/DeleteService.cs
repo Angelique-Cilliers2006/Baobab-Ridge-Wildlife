@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Baobab_Ridge_Wildlife
 {
-    /// <summary>Feature 4: finds and deletes one animal, keeping the list and animals.txt in step.</summary>
+    /// <summary> finds and deletes one animal, keeping the list and animals.txt in step.</summary>
     public class DeleteService
     {
         private readonly List<Animal> animals;

@@ -4,7 +4,7 @@ using System.Globalization;
 
 namespace Baobab_Ridge_Wildlife
 {
-    /// <summary>Feature 5: calculates the summary figures and formats them in the brief's summary.txt layout.</summary>
+    /// <summary> calculates the summary figures and formats them in the summary.txt layout.</summary>
     public class SummaryReport
     {
         // Values start in column 27 of each line, matching the layout in brief section 5.2.

@@ -7,11 +7,7 @@ using System.Windows.Forms;
 
 namespace Baobab_Ridge_Wildlife
 {
-    
-    /// Main window. Person A owns the layout and Feature 1 (Add).
-    /// Other features go in their own partial files (Form1.View.cs, Form1.Update.cs,
-    /// Form1.Delete.cs, Form1.Summary.cs) so the team does not edit the same lines.
-    
+
     public partial class Form1 : Form
     {
         // animals.txt sits beside the running .exe, so no computer-specific paths are used.
@@ -27,19 +23,19 @@ namespace Baobab_Ridge_Wildlife
         private readonly TextBox txtAge = new TextBox();
         private readonly TextBox txtRecoveryScore = new TextBox();
         private readonly Button btnAdd = new Button();
-        private readonly Button btnSaveChanges = new Button();   // wired by Person C
-        private readonly Button btnClear = new Button();         // wired by Person C
+        private readonly Button btnSaveChanges = new Button();   
+        private readonly Button btnClear = new Button();         
 
-        // Search (Person C)
+        // Search 
         private readonly TextBox txtSearchId = new TextBox();
         private readonly Button btnSearch = new Button();
 
-        // Delete and Summary (Person D)
+        // Delete and Summary 
         private readonly Button btnDelete = new Button();
         private readonly Button btnGenerateSummary = new Button();
         private readonly TextBox txtSummary = new TextBox();
 
-        // Grid (Person B)
+        // Grid 
         private readonly DataGridView dgvAnimals = new DataGridView();
 
         /// <summary>Builds all controls on the form and wires up Person A's events.</summary>
@@ -59,8 +55,8 @@ namespace Baobab_Ridge_Wildlife
             BuildAnimalGrid();
 
             btnAdd.Click += btnAdd_Click;
-            btnDelete.Click += btnDelete_Click;                     // Person D, in Form1.PersonD.cs
-            btnGenerateSummary.Click += btnGenerateSummary_Click;   // Person D, in Form1.PersonD.cs
+            btnDelete.Click += btnDelete_Click;                     //  in Form1.PersonD.cs
+            btnGenerateSummary.Click += btnGenerateSummary_Click;   // in Form1.PersonD.cs
             Load += Form1_Load; // defined in Form1.View.cs
         }
 
@@ -80,13 +76,13 @@ namespace Baobab_Ridge_Wildlife
             ConfigureButton(btnAdd, "Add", new Point(12, 195), 85);
             ConfigureButton(btnSaveChanges, "Save Changes", new Point(102, 195), 100);
             ConfigureButton(btnClear, "Clear", new Point(207, 195), 80);
-            btnSaveChanges.Enabled = false; // only enabled in edit mode (Feature 3)
+            btnSaveChanges.Enabled = false; // only enabled in edit mode 
             grpAnimalDetails.Controls.AddRange(new Control[] { btnAdd, btnSaveChanges, btnClear });
 
             Controls.Add(grpAnimalDetails);
         }
 
-        /// Creates the Search by ID box used by Feature 3.
+        /// Creates the Search by ID box 
         private void BuildSearchGroup()
         {
             var grpSearch = new GroupBox { Text = "Search by Animal ID", Location = new Point(12, 260), Size = new Size(300, 62) };
@@ -97,7 +93,7 @@ namespace Baobab_Ridge_Wildlife
             Controls.Add(grpSearch);
         }
 
-        ///Creates the Delete and Generate Summary buttons used by Features 4 and 5.
+        ///Creates the Delete and Generate Summary buttons 
         private void BuildActionButtons()
         {
             ConfigureButton(btnDelete, "Delete", new Point(12, 332), 145);
@@ -105,7 +101,7 @@ namespace Baobab_Ridge_Wildlife
             Controls.AddRange(new Control[] { btnDelete, btnGenerateSummary });
         }
 
-        ///Creates the read-only box where Feature 5 shows the summary on the form.
+        ///Creates the read-only box where it shows the summary on the form.
         private void BuildSummaryBox()
         {
             txtSummary.Location = new Point(12, 374);
@@ -152,7 +148,7 @@ namespace Baobab_Ridge_Wildlife
             button.Size = new Size(width, 30);
         }
 
-        // ---------------- Feature 1: Add a new animal ----------------
+        // ---------------- Add a new animal ----------------
 
         
         /// Validates the inputs, appends the new animal to animals.txt, shows its status and
@@ -242,7 +238,7 @@ namespace Baobab_Ridge_Wildlife
             box.SelectAll();
         }
 
-        ///>Empties the five input boxes and puts the cursor back in Animal ID. Person C reuses this for Clear.
+        ///>Empties the five input boxes and puts the cursor back in Animal ID. 
         private void ClearInputs()
         {
             txtAnimalId.Clear();

@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Baobab_Ridge_Wildlife
 {
-    //Feature 2: View all animals and handle file loading.
+    // View all animals and handle file loading.
     public partial class Form1
     {
         /// <summary>

@@ -32,7 +32,8 @@ namespace Baobab_Ridge_Wildlife
             set
             {
                 recoveryScore = value;
-                ApplyClassification(); 
+                ApplyClassification();
+            }
         }
 
         public string Status { get; private set; }

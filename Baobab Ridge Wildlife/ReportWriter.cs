@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Baobab_Ridge_Wildlife
 {
-    /// <summary>Feature 5: writes the summary report to summary.txt beside the .exe.</summary>
+    /// <summary> writes the summary report to summary.txt beside the .exe.</summary>
     public class ReportWriter
     {
         /// <summary>A friendly message describing the last file error, or "" if there was none.</summary>
